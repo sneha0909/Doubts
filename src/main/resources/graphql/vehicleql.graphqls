@@ -1,16 +1,36 @@
 type Vehicle {
-id: ID!,
-type: String,
-modelCode: String,
-brandName: String,
-launchDate: String
+	id: String!,
+	type: String,
+	modelCode: String,
+	brandName: String,
+	launchDate: String
 }
 
 type Query {
-vehicles(count: Int):[Vehicle]
-vehicle(id: ID):Vehicle
+	findAllVehicles: [Vehicle]
+	findVehicleById(id: String):Vehicle
 }
 
 type Mutation {
-createVehicle(type: String!, modelCode: String!, brandName: String, launchDate: String):Vehicle
+	createVehicle(
+		type: String!, 
+		modelCode: String!, 
+		brandName: String, 
+		launchDate: String
+	) : Vehicle
+	
+	updateVehicle(
+	id: String!,
+	type: String, 
+	modelCode: String, 
+	brandName: String, 
+	launchDate: String
+	):Vehicle
+	
+	updateVehicleType(
+		id: String!,
+		type: String!
+	):Vehicle
+	
+	deleteVehicle(id: String!): Vehicle
 }
